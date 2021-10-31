@@ -33,6 +33,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
+Route::middleware('role:admin')->get('/dashboard', function(){
+    return 'Dashboard';
+})->name('dashboard');
+
 Route::get('/home', function () {
     return view('home');
 });

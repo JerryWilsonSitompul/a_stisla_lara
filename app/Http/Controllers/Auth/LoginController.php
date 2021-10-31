@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request; 
 use Auth;
+use Illuminate\Support\Facades\Redirect;
+
 // Auth
 
 
@@ -54,7 +56,13 @@ class LoginController extends Controller
     //         'password' => $request->password,
     //     ];
     // }
-
+    protected function authenticated(Request $request, $user){
+        if($user->hasRole('admin')){
+            return Redirect()->route('dashboard');
+        }
+            return redirect()->route('home');
+        // dd($user);
+    }
 
 
      public function logout(Request $request) {
