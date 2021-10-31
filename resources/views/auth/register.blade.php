@@ -115,9 +115,9 @@
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
                                     <div class="row">
-                                        <div class="form-group col-6">
+                                        <div class="form-group col-12">
                                             <label for="name">First Name</label>
-                                            <input id="name" type="text" class="form-control" name="name" autofocus>
+                                            <input id="name" type="text" class="form-control" name="name" autofocus required>
                                         </div>
                                         {{-- <div class="form-group col-6">
                                             <label for="last_name">Last Name</label>
@@ -127,9 +127,11 @@
 
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" name="email">
-                                        <div class="invalid-feedback">
-                                        </div>
+                                        <input id="email" type="email" class="form-control" name="email" required>
+                                        @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+
                                     </div>
 
                                     <div class="row">
@@ -140,6 +142,10 @@
                                                 <div class="bar"></div>
                                                 <div class="label"></div>
                                             </div>
+                                            @error('password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+
                                         </div>
                                         {{-- <div class="form-group col-6">
                                             <label for="password2" class="d-block">Password Confirmation</label>
