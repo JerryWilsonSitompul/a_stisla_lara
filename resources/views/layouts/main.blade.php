@@ -20,6 +20,10 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css">
 
+    <!-- Datatables Style -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" />
+
+
 
 
     <!-- Template CSS -->
@@ -33,6 +37,10 @@
     @section('css')
 
     @show
+
+
+    @stack('addon-style')
+
 
 </head>
 
@@ -76,12 +84,20 @@
 
     <!-- Page Specific JS File -->
 
+    <!-- Datatables JS File -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
+
     @include('sweetalert::alert')
 
 
     @section('js')
 
     @show
+
+
+
+    @stack('addon-script')
+
 
 </body>
 </html>

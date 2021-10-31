@@ -9,7 +9,11 @@
         </div>
     </div>
     <div class="section-body">
-        <h2 class="section-title">Hi, {{ Auth::user()->name }}!</h2>
+        <h2 class="section-title">Hi, {{ Auth::user()->name }}! </h2>
+
+
+
+
         <p class="section-lead">
             Change information about yourself on this page.
         </p>
