@@ -49,3 +49,15 @@ Route::get('/profile', 'UserController@show')->name('profile');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+
+//error handling 404 and 500
+
+// Route::get('/404', function(){
+//     return response(view('errors.404'), 404);
+// });
+
+// Route::get('/500', function(){
+//     return response(view('errors.500'), 500);
+// });
+
+

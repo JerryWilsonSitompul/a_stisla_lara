@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-         Alert::success('Congrats', 'You\'ve Successfully Log in');
+        //  Alert::success('Congrats', 'You\'ve Successfully Log in');
         return view('home');
     }
 }
