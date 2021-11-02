@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Spatie\Activitylog\Models\Activity;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +58,12 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // Route::get('/500', function(){
 //     return response(view('errors.500'), 500);
+// });
+
+// Route::get('/log', function () {
+//     // return Activity::with('subject', 'causer')->paginate(3);
+//     return Activity::all()->last();
+//     return view('welcome');
 // });
 
 

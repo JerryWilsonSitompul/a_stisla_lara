@@ -142,15 +142,13 @@
                                                 <div class="bar"></div>
                                                 <div class="label"></div>
                                             </div>
-                                            @error('password')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
+                                            @error('password')<div class="alert alert-danger">{{ $message }}</div>@enderror
 
                                         </div>
-                                        {{-- <div class="form-group col-6">
+                                        <div class="form-group col-6">
                                             <label for="password2" class="d-block">Password Confirmation</label>
                                             <input id="password2" type="password" class="form-control" name="password-confirm">
-                                        </div> --}}
+                                        </div>
                                     </div>
 
 

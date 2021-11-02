@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\Facades\DataTables;
 use RealRashid\SweetAlert\Facades\Alert;
+Use Illuminate\Support\Facades\Auth;
 
 
 
@@ -100,16 +101,27 @@ class UserController extends Controller
 
     
 
-    //    User::create([
-    //         'name' => $request->input('name'),
-    //         'email' => $request->input('email'),
-    //         'password' => bcrypt(($request->input('password')))
-    //     ])->assignRole('user');
-
+        $createStatus = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt(($request->input('password')))
+        ])->assignRole('user');
+        if ($createStatus) {
+            activity(Auth::user()->name)
+                ->performedOn($createStatus)
+                ->causedBy(Auth::user())
+                //->withProperties(['customProperty' => 'customValue'])
+                ->log('User created by ' . Auth::user()->name);
 
         Alert::success('Success', 'Berhasil ditambahkan!');
 
         return redirect()->route('user.index');
+        }
+        else{
+            Alert::warning('Warning', 'Gagal ditambahkan!');
+        }
+
+            
 
     // dd($request->email);
     }

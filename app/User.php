@@ -13,6 +13,9 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
     use LogsActivity;
+    
+    
+    
 
 
     /**
@@ -42,7 +45,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //  public function role(){
-    //     return $this->belongsTo('App\Role');
-    // }
+    // this method for generate activity logs using this model
+
+    protected static $logAttributes = ['name', 'email','password','created_at','updated_at'];
+    protected static $logName = 'Administrator';
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return "You have {$eventName} ";
+    }
+
 }

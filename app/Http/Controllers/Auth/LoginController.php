@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request; 
-use Auth;
+// use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 // Auth
 
@@ -57,16 +60,23 @@ class LoginController extends Controller
     //     ];
     // }
     protected function authenticated(Request $request, $user){
-        if($user->hasRole('admin')){
+        if($user->hasRole('admin')){//check if user login as role admin using <spatie role package> 
+                activity(Auth::user()->name) // create log activity using <spatie activitylog package>
+                ->causedBy(Auth::user())
+                //->withProperties(['customProperty' => 'customValue'])
+                ->log(Auth::user()->name .' has Been Login '  );   
+
+            Alert::success('Congrats', 'You\'ve Successfully Log in');
             return Redirect()->route('dashboard');
         }
+            Alert::success('Congrats', 'You\'ve Successfully Log in');
             return redirect()->route('home');
         // dd($user);
     }
 
 
-     public function logout(Request $request) {
+    public function logout(Request $request) {
         Auth::logout();
         return redirect('/login');
-      }
+    }
 }

@@ -8,7 +8,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }} "><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+            <li class="{{ set_active('dashboard') }}"><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
 
             {{-- <li class="nav-item dropdown {{ Request::is('admin/dashboard') ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
@@ -17,6 +17,24 @@
                 <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
             </ul>
             </li> --}}
+
+            <li class="nav-item dropdown {{ set_active('user.index')  }}">
+
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i> <span>Utilities</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ set_active('user.index')  }}"><a href="{{ route('user.index') }}">Manage Users</a></li>
+                    <li><a class="nav-link" href="utilities-invoice.html">Invoice</a></li>
+                    <li><a href="utilities-subscribe.html">Subscribe</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="nav-icon fas fa-cog"></i> <span>Configuration</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="features-settings.html">Settings</a></li>
+                    <li><a class="nav-link" href="features-setting-detail.html">Setting Detail</a></li>
+                </ul>
+            </li>
 
 
             <li class="menu-header">Starter</li>

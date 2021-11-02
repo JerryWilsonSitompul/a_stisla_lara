@@ -7,7 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- @notifyCss --}}
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.min.css"> --}}
+
+
+
 
 
     <!-- General CSS Files -->
@@ -34,12 +39,15 @@
 
 
 
+
     @section('css')
 
     @show
 
 
     @stack('addon-style')
+
+
 
 
 </head>
@@ -98,6 +106,13 @@
 
     @stack('addon-script')
 
+    {{-- @include('notify::messages') --}}
+    {{-- // Laravel 7 or greater --}}
+
+    {{-- <x:notify-messages /> --}}
+
+
+    {{-- @notifyJs --}}
 
 </body>
 </html>
