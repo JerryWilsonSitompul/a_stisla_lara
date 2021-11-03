@@ -1,8 +1,18 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Activitylog\Models\Activity;
+
+use Spatie\Menu\Menu;
+use Spatie\Menu\Link;
+use Illuminate\Support\Facades\DB;
+// use Spatie\Menu\Laravel\Link;
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +59,8 @@ Route::get('/profile', 'UserController@show')->name('profile');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::get('/welcome', 'HomeController@index');
+
 
 //error handling 404 and 500
 
@@ -65,5 +77,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //     return Activity::all()->last();
 //     return view('welcome');
 // });
+
+
 
 

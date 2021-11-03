@@ -22,7 +22,8 @@ class DashboardController extends Controller
         // $recentactivity = User::with('activity')->limit(3)->get();
         notify()->success('Hi '.Auth::user()->name.', welcome to Stisla');
 
-        return view('pages.admin.dashboard',compact('recentactivity'));
+        return view('pages.admin.dashboard',compact('recentactivity'))->withsuccess('welcome to Stisla');
+        // return view('pages.admin.dashboard',compact('recentactivity'));
         // dd($recentactivity);
     }
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Menu\Menu;
+use Spatie\Menu\Link;
 
 
 class HomeController extends Controller
@@ -26,10 +28,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //  Alert::success('Congrats', 'You\'ve Successfully Log in');
-        
-        notify()->success('Hi '.Auth::user()->name.', welcome to Stisla');
-        // emotify('success', 'You are awesome, your data was successfully created');
+    //     $items = [
+    //     '/' => 'Home',
+    //     '/about' => 'About',
+    //     '/contact' => 'Contact',
+    // ];
+
+    // $realmenu = Menu::build($items, function ($menu, $label, $link) {
+    //     $menu->link($link, $label);
+    // });
+
+  
+        // dd($realmenu);
         return view('home');
     }
 }
