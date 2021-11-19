@@ -29,15 +29,23 @@
                         <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
                             @csrf
 
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+
                                 <label for="email">Email</label>
                                 <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
                                 <div class="invalid-feedback">
                                     Please fill in your email
                                 </div>
+                                @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                                @endif
+
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
                                 <div class="d-block">
                                     <label for="password" class="control-label">Password</label>
                                 </div>
@@ -45,6 +53,12 @@
                                 <div class="invalid-feedback">
                                     please fill in your password
                                 </div>
+                                @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                                @endif
+
                             </div>
 
                             <div class="form-group">

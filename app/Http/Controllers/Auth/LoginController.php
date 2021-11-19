@@ -48,18 +48,19 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    //   protected function credentials(Request $request)
-    // {
-    //     $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
-    //         ? $this->username()
-    //         : 'username';
+    protected function credentials(Request $request)
+    {
+        $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
+            ? $this->username()
+            : 'username';
 
-    //     return [
-    //         $field => $request->get($this->username()),
-    //         'password' => $request->password,
-    //     ];
-    // }
+        return [
+            $field => $request->get($this->username()),
+            'password' => $request->password,
+        ];
+    }
     protected function authenticated(Request $request, $user){
+        
         if($user->hasRole('admin')){//check if user login as role admin using <spatie role package> 
                 activity(Auth::user()->name) // create log activity using <spatie activitylog package>
                 ->causedBy(Auth::user())
